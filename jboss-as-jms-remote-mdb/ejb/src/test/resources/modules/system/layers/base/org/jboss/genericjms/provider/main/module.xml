@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module xmlns="urn:jboss:module:1.6" name="org.jboss.genericjms.provider">
+    <resources>
+        <resource-root path="qpid-jms-client-0.50.0.jar"/>
+        <resource-root path="qpid-jms-discovery-0.50.0.jar"/>
+        <!-- The following dependencies are already provided by JBoss EAP 7.1
+             (see <dependencies> section below)
+        <resource-root path="geronimo-jms_2.0_spec-1.0-alpha-2.jar" />
+        <resource-root path="slf4j-api-1.7.25.jar"/>
+        -->
+    </resources>
+    <dependencies>
+        <!-- To get access to the slf4j API -->
+        <module name="org.slf4j"/>
+        <module name="org.slf4j.impl"/>
+        <!-- To get access to the javax.naming API -->
+        <module name="javax.api"/>
+        <!-- To get access to the JMS 2.0 API. Needs to be exported to provide the JMS API also at runtime to any
+             application that has a dependency on qpid-jms-client. -->
+        <module name="javax.jms.api" export="true"/>
+        <module name="io.netty"/>
+        <module name="org.apache.qpid.proton" />
+    </dependencies>
+</module>
+
